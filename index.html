@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Risyad — Creative Copywriter</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0f0e0d;
+  --paper:#faf8f3;
+  --warm:#e8e0d0;
+  --gold:#b8860b;
+  --gold-light:#d4a843;
+  --muted:#6b6560;
+  --accent:#c44b2b;
+  --wa-green:#25D366;
+  --wa-dark:#128C7E;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Syne',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 3rem;
+  background:rgba(250,248,243,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--warm);
+}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;letter-spacing:-0.02em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{
+  font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:8rem 3rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;
+  right:-10%;top:10%;width:55%;height:80%;
+  background:radial-gradient(ellipse at center, rgba(184,134,11,0.06) 0%, transparent 70%);
+  border-radius:50%;
+}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:0.72rem;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;
+}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+.hero-name{
+  font-family:'Fraunces',serif;font-size:clamp(3rem,5vw,5.5rem);
+  font-weight:700;line-height:1.0;letter-spacing:-0.03em;margin-bottom:0.5rem;
+}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-title{
+  font-family:'Fraunces',serif;font-size:clamp(1rem,2vw,1.3rem);
+  font-weight:300;color:var(--muted);margin-bottom:2rem;letter-spacing:-0.01em;
+}
+.hero-bio{
+  font-size:0.95rem;line-height:1.8;color:var(--muted);
+  max-width:440px;margin-bottom:2.5rem;
+}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  padding:0.85rem 2rem;background:var(--ink);color:var(--paper);
+  text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:600;transition:all 0.2s;border:1px solid var(--ink);
+}
+.btn-primary:hover{background:var(--gold);border-color:var(--gold)}
+.btn-outline{
+  padding:0.85rem 2rem;border:1px solid var(--ink);
+  text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:600;color:var(--ink);transition:all 0.2s;
+}
+.btn-outline:hover{background:var(--warm)}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:0.85rem 2rem;background:var(--wa-green);color:#fff;
+  text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:600;transition:all 0.25s;border:1px solid var(--wa-green);
+}
+.btn-wa:hover{background:var(--wa-dark);border-color:var(--wa-dark)}
+.btn-wa svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+.hero-stats{display:flex;flex-direction:column;gap:2.5rem}
+.stat-item{border-left:2px solid var(--warm);padding-left:1.5rem}
+.stat-num{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:700;line-height:1;color:var(--accent)}
+.stat-label{font-size:0.78rem;color:var(--muted);letter-spacing:0.05em;margin-top:0.25rem}
+.hero-quote{
+  font-family:'Fraunces',serif;font-size:1.05rem;font-style:italic;
+  color:var(--ink);line-height:1.7;border-top:1px solid var(--warm);
+  padding-top:1.5rem;margin-top:1.5rem;
+}
+
+/* ── SECTION BASE ── */
+.section{padding:6rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  font-family:'DM Mono',monospace;font-size:0.72rem;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;
+}
+.section-label::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+.section-title{
+  font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:3rem;
+}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:1.5rem}
+.skill-group{margin-bottom:2rem}
+.skill-group-title{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-tag{
+  padding:0.4rem 0.9rem;border:1px solid var(--warm);
+  font-size:0.8rem;color:var(--muted);
+  transition:all 0.2s;cursor:default;
+}
+.skill-tag:hover{border-color:var(--gold);color:var(--gold)}
+.lang-row{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--warm)}
+.lang-name{font-size:0.9rem;font-weight:600}
+.lang-level{font-size:0.8rem;color:var(--muted)}
+
+/* ── WORK ── */
+.work-section{background:var(--ink);color:var(--paper)}
+.work-section .section-label{color:var(--gold-light)}
+.work-section .section-label::before{background:var(--gold-light)}
+.work-section .section-title{color:var(--paper)}
+.work-grid{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.1)}
+.work-card{
+  background:var(--ink);padding:2.5rem;
+  display:grid;grid-template-columns:80px 1fr auto;gap:2rem;align-items:start;
+  transition:background 0.2s;
+}
+.work-card:hover{background:rgba(255,255,255,0.03)}
+.work-num{
+  font-family:'DM Mono',monospace;font-size:0.75rem;
+  color:rgba(255,255,255,0.25);padding-top:0.2rem;
+}
+.work-type{
+  font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold-light);margin-bottom:0.75rem;
+}
+.work-title{
+  font-family:'Fraunces',serif;font-size:1.4rem;
+  font-weight:700;color:var(--paper);margin-bottom:0.75rem;letter-spacing:-0.02em;
+}
+.work-desc{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.55);max-width:500px}
+.work-meta{text-align:right;font-size:0.8rem;color:rgba(255,255,255,0.35);white-space:nowrap}
+
+/* ── PORTFOLIO — DUA KARYA BERDAMPINGAN ── */
+.piece-section{background:var(--warm)}
+.piece-duo{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.piece-card{
+  background:var(--paper);border:1px solid rgba(0,0,0,0.08);
+  overflow:hidden;display:flex;flex-direction:column;
+}
+.piece-header{
+  padding:2.5rem 2.5rem 2rem;border-bottom:1px solid var(--warm);
+  display:flex;flex-direction:column;gap:1rem;
+}
+.piece-header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.piece-type{
+  font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.75rem;font-family:'DM Mono',monospace;
+}
+.piece-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.2vw,1.9rem);
+  font-weight:700;letter-spacing:-0.03em;line-height:1.2;
+}
+.piece-title em{font-style:italic;color:var(--accent)}
+.piece-badge{
+  padding:0.35rem 0.9rem;border:1px solid var(--warm);
+  font-size:0.72rem;color:var(--muted);white-space:nowrap;flex-shrink:0;
+}
+.piece-body{display:flex;flex-direction:column;flex:1}
+.piece-excerpt{padding:2.5rem;border-bottom:1px solid var(--warm)}
+.excerpt-label{
+  font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.25rem;
+}
+.excerpt-text{
+  font-family:'Fraunces',serif;font-size:1rem;font-weight:300;
+  line-height:1.9;color:var(--ink);font-style:italic;margin-bottom:1rem;
+}
+.excerpt-text:last-child{margin-bottom:0}
+.piece-sidebar{padding:2rem 2.5rem;flex:1}
+.sidebar-section{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--warm)}
+.sidebar-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.sidebar-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem}
+.sidebar-value{font-size:0.87rem;line-height:1.6;color:var(--ink)}
+.tag{
+  display:inline-block;padding:0.25rem 0.65rem;
+  background:var(--warm);font-size:0.72rem;color:var(--muted);margin:0.2rem;
+}
+
+/* ── ACHIEVEMENTS ── */
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.ach-card{padding:2rem;border:1px solid var(--warm);transition:border-color 0.2s}
+.ach-card:hover{border-color:var(--gold)}
+.ach-icon{
+  width:40px;height:40px;background:var(--ink);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-bottom:1.5rem;
+}
+.ach-title{font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;line-height:1.4}
+.ach-subtitle{font-size:0.82rem;color:var(--muted);line-height:1.5}
+
+/* ── CONTACT ── */
+.contact-section{background:var(--ink);color:var(--paper);text-align:center;padding:6rem 3rem}
+.contact-section .section-label{color:var(--gold-light);justify-content:center}
+.contact-section .section-label::before{display:none}
+.contact-title{
+  font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,5rem);
+  font-weight:700;letter-spacing:-0.04em;line-height:1;margin-bottom:2rem;
+}
+.contact-title em{font-style:italic;color:var(--gold-light)}
+.contact-sub{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:3rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+.contact-info{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-bottom:3rem}
+.contact-item-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem}
+.contact-item-value{font-size:0.95rem;color:var(--paper)}
+.contact-item-value a{color:var(--gold-light);text-decoration:none}
+.contact-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.contact-section .btn-primary{background:transparent;border-color:rgba(255,255,255,0.3);color:var(--paper)}
+.contact-section .btn-primary:hover{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+
+/* ── FLOATING WA BUTTON ── */
+.wa-float{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--wa-green);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.4);
+  transition:all 0.25s;text-decoration:none;
+}
+.wa-float:hover{background:var(--wa-dark);transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+.wa-float-tooltip{
+  position:absolute;right:68px;
+  background:var(--ink);color:var(--paper);
+  font-size:0.75rem;padding:0.4rem 0.85rem;
+  white-space:nowrap;opacity:0;transform:translateX(8px);
+  transition:all 0.2s;pointer-events:none;
+}
+.wa-float:hover .wa-float-tooltip{opacity:1;transform:translateX(0)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);
+  padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+footer p{font-size:0.78rem;color:rgba(255,255,255,0.3)}
+
+/* ── ANIMATION ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .piece-duo{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.nav-links{gap:1rem}
+  .hero{padding:7rem 1.5rem 4rem}
+  .hero-inner,.about-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:row;flex-wrap:wrap}
+  .work-card{grid-template-columns:1fr}.work-num{display:none}.work-meta{text-align:left}
+  .section{padding:4rem 1.5rem}
+  footer{padding:1.5rem}
+  .piece-header-top{flex-direction:column}
+  .wa-float{bottom:1.5rem;right:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ░░ FLOATING WHATSAPP BUTTON ░░ -->
+<a class="wa-float" href="https://wa.me/6285710763808?text=Halo%20Risyad%2C%20saya%20tertarik%20untuk%20berkolaborasi%20dengan%20kamu!" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
+  <span class="wa-float-tooltip">Chat di WhatsApp</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ░░ NAV ░░ -->
+<nav>
+  <div class="nav-logo">Muhammad Risyad</div>
+  <div class="nav-links">
+    <a href="#about">Tentang</a>
+    <a href="#work">Pengalaman</a>
+    <a href="#portfolio">Karya</a>
+    <a href="#contact">Kontak</a>
+  </div>
+</nav>
+
+<!-- ░░ HERO ░░ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Creative Copywriter</div>
+      <h1 class="hero-name">Muhammad<br><em>Risyad</em></h1>
+      <p class="hero-title">Content Strategist · Multilingual Communicator</p>
+      <p class="hero-bio">Merancang narasi yang bukan sekadar dibaca — tapi dirasakan. Dua tahun mengubah ide menjadi kata-kata yang menggerakkan audiens.</p>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn-primary">Lihat Karya</a>
+        <a href="https://wa.me/6285710763808?text=Halo%20Risyad%2C%20saya%20tertarik%20untuk%20berkolaborasi%20dengan%20kamu!" target="_blank" class="btn-wa">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-quote">
+        "Kata yang tepat bukan hanya menyampaikan pesan — ia membangun kepercayaan."
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">2+</div><div class="stat-label">Tahun pengalaman freelance</div></div>
+      <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Klien dari berbagai industri</div></div>
+      <div class="stat-item"><div class="stat-num">40%</div><div class="stat-label">Rata-rata peningkatan engagement</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Bahasa yang dikuasai</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ ABOUT ░░ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-label">Tentang Saya</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title">Kata adalah<br>senjata saya.</h2>
+        <p>Saya adalah seorang Creative Copywriter yang percaya bahwa konten terbaik lahir dari perpaduan antara riset mendalam, empati terhadap audiens, dan keberanian bereksperimen dengan bahasa.</p>
+        <p>Saat ini tengah menempuh pendidikan Pendidikan Bahasa Prancis di Universitas Negeri Yogyakarta — karena bagi saya, memahami bahasa berarti memahami cara manusia berpikir dan merasakan.</p>
+        <p>Dari copywriting iklan hingga artikel feature panjang, saya menulis dengan satu tujuan: membuat pembaca merasakan sesuatu yang kemudian mendorong mereka untuk bertindak.</p>
+      </div>
+      <div>
+        <div class="skill-group">
+          <div class="skill-group-title">Keahlian Utama</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Creative Storytelling</span>
+            <span class="skill-tag">Brand Voice</span>
+            <span class="skill-tag">SEO Writing</span>
+            <span class="skill-tag">Content Strategy</span>
+            <span class="skill-tag">Narrative Development</span>
+            <span class="skill-tag">Email Marketing</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Soft Skills</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Public Relations</span>
+            <span class="skill-tag">Research & Analysis</span>
+            <span class="skill-tag">Critical Thinking</span>
+            <span class="skill-tag">Social Intelligence</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Kemampuan Bahasa</div>
+          <div class="lang-row"><span class="lang-name">Bahasa Indonesia</span><span class="lang-level">Native</span></div>
+          <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Intermediate (B1–B2)</span></div>
+          <div class="lang-row"><span class="lang-name">Français</span><span class="lang-level">Beginner (A1–A2)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ WORK ░░ -->
+<section class="section work-section" id="work">
+  <div class="container">
+    <div class="section-label">Pengalaman</div>
+    <h2 class="section-title" style="color:var(--paper)">Jejak<br>profesional.</h2>
+    <div class="work-grid">
+      <div class="work-card fade-in">
+        <div class="work-num">01</div>
+        <div>
+          <div class="work-type">Copywriter & Content Creator</div>
+          <div class="work-title">Freelance · Multiple Clients</div>
+          <div class="work-desc">Mengembangkan strategi konten untuk 10+ klien di sektor pendidikan, lifestyle, dan media sosial. Spesialis storytelling untuk website, social media, email marketing, dan materi iklan. Rata-rata meningkatkan engagement audiens sebesar 40%.</div>
+        </div>
+        <div class="work-meta">2023 – Sekarang</div>
+      </div>
+      <div class="work-card fade-in">
+        <div class="work-num">02</div>
+        <div>
+          <div class="work-type">Article Writer</div>
+          <div class="work-title">IMASPI (Asosiasi Mahasiswa Prancis Nasional)</div>
+          <div class="work-desc">Memproduksi konten literasi bahasa Prancis dan budaya untuk audiens mahasiswa nasional, menggabungkan keahlian linguistik dengan wawasan budaya.</div>
+        </div>
+        <div class="work-meta">2025 – 2026</div>
+      </div>
+      <div class="work-card fade-in">
+        <div class="work-num">03</div>
+        <div>
+          <div class="work-type">Staff · Career & Student Works</div>
+          <div class="work-title">BEM Universitas Negeri Yogyakarta</div>
+          <div class="work-desc">Mengelola program pengembangan keterampilan mahasiswa dan mengkurasi karya-karya kreatif, serta mengkoordinasikan inisiatif pengembangan karier mahasiswa.</div>
+        </div>
+        <div class="work-meta">2025 – 2026</div>
+      </div>
+      <div class="work-card fade-in">
+        <div class="work-num">04</div>
+        <div>
+          <div class="work-type">Public Relations & Media</div>
+          <div class="work-title">Himpunan Prancis UNY</div>
+          <div class="work-desc">Mengelola komunikasi eksternal dan kehadiran media sosial untuk meningkatkan keterlibatan anggota, sekaligus mengembangkan pesan strategis untuk memperkuat citra organisasi.</div>
+        </div>
+        <div class="work-meta">2025 – 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ PORTFOLIO — DUA KARYA BERDAMPINGAN ░░ -->
+<section class="section piece-section" id="portfolio">
+  <div class="container">
+    <div class="section-label">Karya Pilihan</div>
+    <h2 class="section-title">Tulisan yang<br>berbicara sendiri.</h2>
+
+    <div class="piece-duo">
+
+      <!-- KARYA 1: K-Beauty -->
+      <div class="piece-card fade-in">
+        <div class="piece-header">
+          <div class="piece-type">Feature Article · Beauty & Lifestyle · Sociolla / Beauty Journal</div>
+          <div class="piece-header-top">
+            <h3 class="piece-title">Belajar Makeup Korea Semudah<br>Ngobrol dengan <em>Sahabat</em></h3>
+            <div class="piece-badge">2025 · Bahasa Indonesia</div>
+          </div>
+        </div>
+        <div class="piece-body">
+          <div class="piece-excerpt">
+            <div class="excerpt-label">Kutipan Artikel</div>
+            <p class="excerpt-text">"Di industri konten kecantikan digital yang semakin ramai, pemenangnya bukan siapa yang paling banyak posting — melainkan siapa yang paling dipercaya."</p>
+            <p class="excerpt-text" style="font-size:0.92rem">"Kontekstualisasi semacam inilah yang membuat konten Beauty Journal terasa relevan dan bukan sekadar salinan dari sumber Korea. Ia bicara kepada perempuan Indonesia yang nyata, dengan kondisi kulit, cuaca, dan budget yang nyata pula."</p>
+          </div>
+          <div class="piece-sidebar">
+            <div class="sidebar-section">
+              <div class="sidebar-label">Tentang Karya Ini</div>
+              <div class="sidebar-value">Analisis mendalam tentang strategi konten Beauty Journal (Sociolla) dalam mengadaptasi tren K-Beauty untuk pasar Indonesia.</div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-label">Pendekatan</div>
+              <div class="sidebar-value">Riset data primer & sekunder, analisis kompetitor, wawasan konsumen Gen Z Indonesia</div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-label">Topik</div>
+              <div>
+                <span class="tag">K-Beauty</span><span class="tag">Beauty Journal</span>
+                <span class="tag">Sociolla</span><span class="tag">Konten Digital</span><span class="tag">Gen Z</span>
+              </div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-label">Data yang Diangkat</div>
+              <div class="sidebar-value">86% Gen Z · 54% pembeli online · 77% baca review · Pertumbuhan pasar 16%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KARYA 2: Tugas Kuliah -->
+      <div class="piece-card fade-in">
+        <div class="piece-header">
+          <div class="piece-type">Opini & Esai Budaya · Pendidikan Tinggi · Media Digital</div>
+          <div class="piece-header-top">
+            <h3 class="piece-title">Tugas Kuliah yang Mati di <em>Laci:</em> Ketika Kampus Membunuh Suara Generasinya</h3>
+            <div class="piece-badge">2026 · Bahasa Indonesia</div>
+          </div>
+        </div>
+        <div class="piece-body">
+          <div class="piece-excerpt">
+            <div class="excerpt-label">Kutipan Artikel</div>
+            <p class="excerpt-text">"Perpustakaan terkunci itu bernama: tugas kuliah. Puluhan juta dokumen lahir dan mati dalam putaran akademik yang tidak pernah bersentuhan dengan realitas sosial di luar kampus."</p>
+            <p class="excerpt-text" style="font-size:0.92rem">"Tugas akademik mahasiswa adalah objectified cultural capital — hasil intelektual bernilai tinggi yang dibiarkan membusuk karena keterbatasan sistem, bukan keterbatasan ide."</p>
+          </div>
+          <div class="piece-sidebar">
+            <div class="sidebar-section">
+              <div class="sidebar-label">Tentang Karya Ini</div>
+              <div class="sidebar-value">Esai advokasi tentang potensi karya tulis mahasiswa Indonesia yang terbuang dalam sistem birokrasi akademik, dan bagaimana platform digital bisa menjadi solusinya.</div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-label">Pendekatan</div>
+              <div class="sidebar-value">Analisis sosial-budaya, studi kasus konten viral, komparasi kurikulum internasional</div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-label">Topik</div>
+              <div>
+                <span class="tag">Budaya</span><span class="tag">Pendidikan</span>
+                <span class="tag">Generasi Z</span><span class="tag">Media Digital</span><span class="tag">Advokasi</span>
+              </div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-label">Konteks</div>
+              <div class="sidebar-value">9 juta mahasiswa aktif · Karya ilmiah UNY 2026 · Diadaptasi untuk publikasi digital</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .piece-duo -->
+  </div>
+</section>
+
+<!-- ░░ ACHIEVEMENTS ░░ -->
+<section class="section" id="achievements">
+  <div class="container">
+    <div class="section-label">Prestasi</div>
+    <h2 class="section-title">Diakui,<br>bukan hanya ditulis.</h2>
+    <div class="ach-grid">
+      <div class="ach-card fade-in">
+        <div class="ach-icon">3</div>
+        <div class="ach-title">Juara 3 · Lomba Karya Ilmiah Remaja (KIR)</div>
+        <div class="ach-subtitle">Tingkat regional & nasional dalam kompetisi penulisan ilmiah</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-icon">★</div>
+        <div class="ach-title">Finalis · Festival Lomba Seni Siswa Nasional (FL2SN)</div>
+        <div class="ach-subtitle">Kategori Puisi tingkat nasional</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-icon">2</div>
+        <div class="ach-title">Juara 2 · Lomba Teater Francophone Provinsi</div>
+        <div class="ach-subtitle">Kompetisi teater berbahasa Prancis tingkat Provinsi Yogyakarta</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-icon">✍</div>
+        <div class="ach-title">Karya Ilmiah Dipublikasikan</div>
+        <div class="ach-subtitle">Penelitian fenomena sosial parkir liar di Tangerang Selatan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CONTACT ░░ -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-label">Kontak</div>
+    <h2 class="contact-title">Mari kita<br><em>berkolaborasi.</em></h2>
+    <p class="contact-sub">Punya proyek yang butuh kata-kata yang tepat? Saya siap mendengar dan membantu mewujudkannya.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value"><a href="mailto:icad1404@gmail.com">icad1404@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">WhatsApp</div>
+        <div class="contact-item-value"><a href="https://wa.me/6285710763808" target="_blank">+62 857-1076-3808</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Lokasi</div>
+        <div class="contact-item-value">Banten / Yogyakarta</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Instagram</div>
+        <div class="contact-item-value"><a href="https://instagram.com/risyadadt._" target="_blank">@risyadadt._</a></div>
+      </div>
+    </div>
+    <div class="contact-btns">
+      <a href="mailto:icad1404@gmail.com" class="btn-primary">Kirim Email</a>
+      <a href="https://wa.me/6285710763808?text=Halo%20Risyad%2C%20saya%20tertarik%20untuk%20berkolaborasi%20dengan%20kamu!" target="_blank" rel="noopener" class="btn-wa">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer>
+  <p>© 2026 Muhammad Risyad Aria Aditya</p>
+  <p>Creative Copywriter · Content Strategist · Yogyakarta</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
