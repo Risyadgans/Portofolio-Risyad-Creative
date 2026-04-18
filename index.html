@@ -1,593 +1,1021 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Risyad — Creative Copywriter</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Muhammad Risyad — Words That Move</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Neue+Montreal:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cabinet+Grotesk:wght@300;400;500;700;800;900&family=Space+Mono&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --ink:#0f0e0d;
-  --paper:#faf8f3;
-  --warm:#e8e0d0;
-  --gold:#b8860b;
-  --gold-light:#d4a843;
-  --muted:#6b6560;
-  --accent:#c44b2b;
-  --wa-green:#25D366;
-  --wa-dark:#128C7E;
+  --void:#050404;
+  --page:#f5f2eb;
+  --cream:#ede9de;
+  --rust:#c0410a;
+  --rust-light:#e05a1f;
+  --gold:#c9963b;
+  --gold-pale:#f0d998;
+  --sage:#4a6352;
+  --fog:#8a8279;
+  --white:#fdfcfa;
+  --border:rgba(255,255,255,0.08);
 }
-html{scroll-behavior:smooth}
+
+html{scroll-behavior:smooth;cursor:none}
 body{
-  font-family:'Syne',sans-serif;
-  background:var(--paper);
-  color:var(--ink);
+  font-family:'Cabinet Grotesk',sans-serif;
+  background:var(--void);
+  color:var(--white);
   overflow-x:hidden;
 }
 
+/* ── CURSOR ── */
+.cursor{
+  position:fixed;width:10px;height:10px;
+  background:var(--rust);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.1s ease,width 0.3s ease,height 0.3s ease,background 0.3s ease;
+  mix-blend-mode:normal;
+}
+.cursor-ring{
+  position:fixed;width:38px;height:38px;
+  border:1px solid rgba(192,65,10,0.5);border-radius:50%;
+  pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:transform 0.15s ease,width 0.3s ease,height 0.3s ease;
+}
+body:hover .cursor{opacity:1}
+
 /* ── NAV ── */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:0;left:0;right:0;z-index:500;
   display:flex;justify-content:space-between;align-items:center;
-  padding:1.2rem 3rem;
-  background:rgba(250,248,243,0.92);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--warm);
+  padding:1.5rem 3.5rem;
+  mix-blend-mode:normal;
 }
-.nav-logo{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;letter-spacing:-0.02em}
-.nav-links{display:flex;gap:2rem}
+.nav-logo{
+  font-family:'Instrument Serif',serif;
+  font-size:1rem;letter-spacing:0.01em;
+  color:var(--white);opacity:0.6;
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
 .nav-links a{
-  font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--muted);text-decoration:none;transition:color 0.2s;
+  font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(253,252,250,0.45);text-decoration:none;
+  transition:color 0.2s;font-weight:500;
 }
-.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  padding:0.55rem 1.4rem;
+  border:1px solid rgba(192,65,10,0.6);
+  color:var(--rust-light) !important;
+  font-size:0.72rem !important;
+  letter-spacing:0.18em;
+  transition:all 0.25s !important;
+}
+.nav-cta:hover{
+  background:var(--rust) !important;
+  color:var(--white) !important;
+  border-color:var(--rust) !important;
+}
 
 /* ── HERO ── */
 .hero{
-  min-height:100vh;display:flex;align-items:center;
-  padding:8rem 3rem 5rem;
-  position:relative;overflow:hidden;
+  min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 3.5rem 5rem;position:relative;overflow:hidden;
 }
-.hero::before{
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 75% 30%, rgba(192,65,10,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,150,59,0.06) 0%, transparent 60%);
+}
+.hero-lines{
+  position:absolute;inset:0;overflow:hidden;opacity:0.04;
+}
+.hero-lines::before{
   content:'';position:absolute;
-  right:-10%;top:10%;width:55%;height:80%;
-  background:radial-gradient(ellipse at center, rgba(184,134,11,0.06) 0%, transparent 70%);
-  border-radius:50%;
+  top:-50%;left:50%;width:1px;height:200%;
+  background:linear-gradient(to bottom,transparent,var(--white),transparent);
+  animation:scanline 8s ease-in-out infinite;
 }
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.hero-eyebrow{
-  font-family:'DM Mono',monospace;font-size:0.72rem;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;
+@keyframes scanline{
+  0%{transform:translateX(-300px) rotate(-15deg)}
+  100%{transform:translateX(300px) rotate(-15deg)}
 }
-.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+.hero-ticker{
+  position:absolute;top:0;left:0;right:0;
+  background:var(--rust);
+  padding:0.5rem 0;overflow:hidden;
+  display:flex;
+}
+.ticker-track{
+  display:flex;gap:0;white-space:nowrap;
+  animation:ticker 30s linear infinite;
+}
+.ticker-item{
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(255,255,255,0.9);
+  padding:0 2.5rem;
+}
+.ticker-dot{color:rgba(255,255,255,0.4)}
+@keyframes ticker{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+.hero-inner{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:2}
+.hero-kicker{
+  display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
+}
+.hero-kicker-line{width:48px;height:1px;background:var(--rust)}
+.hero-kicker-text{
+  font-family:'Space Mono',monospace;
+  font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--rust-light);
+}
 .hero-name{
-  font-family:'Fraunces',serif;font-size:clamp(3rem,5vw,5.5rem);
-  font-weight:700;line-height:1.0;letter-spacing:-0.03em;margin-bottom:0.5rem;
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(4.5rem,10vw,11rem);
+  line-height:0.88;letter-spacing:-0.03em;
+  margin-bottom:2.5rem;
 }
-.hero-name em{font-style:italic;color:var(--accent)}
-.hero-title{
-  font-family:'Fraunces',serif;font-size:clamp(1rem,2vw,1.3rem);
-  font-weight:300;color:var(--muted);margin-bottom:2rem;letter-spacing:-0.01em;
+.hero-name .first{
+  display:block;color:var(--white);
+  font-style:italic;
+}
+.hero-name .last{
+  display:block;
+  -webkit-text-stroke:1px rgba(255,255,255,0.2);
+  color:transparent;
+}
+.hero-name .last:hover{
+  color:var(--white);
+  -webkit-text-stroke:0;
+  transition:all 0.4s ease;
+}
+.hero-foot{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:2rem;align-items:end;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:2rem;
 }
 .hero-bio{
-  font-size:0.95rem;line-height:1.8;color:var(--muted);
-  max-width:440px;margin-bottom:2.5rem;
+  font-size:0.95rem;line-height:1.75;color:rgba(253,252,250,0.5);
+  font-weight:300;
 }
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{
-  padding:0.85rem 2rem;background:var(--ink);color:var(--paper);
-  text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:600;transition:all 0.2s;border:1px solid var(--ink);
+.hero-bio strong{color:var(--white);font-weight:500}
+.hero-role{
+  text-align:center;
 }
-.btn-primary:hover{background:var(--gold);border-color:var(--gold)}
-.btn-outline{
-  padding:0.85rem 2rem;border:1px solid var(--ink);
-  text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:600;color:var(--ink);transition:all 0.2s;
+.hero-role-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--fog);margin-bottom:0.5rem;
 }
-.btn-outline:hover{background:var(--warm)}
-.btn-wa{
-  display:inline-flex;align-items:center;gap:0.6rem;
-  padding:0.85rem 2rem;background:var(--wa-green);color:#fff;
-  text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:600;transition:all 0.25s;border:1px solid var(--wa-green);
+.hero-role-value{
+  font-family:'Instrument Serif',serif;
+  font-size:1.4rem;font-style:italic;color:var(--gold);
 }
-.btn-wa:hover{background:var(--wa-dark);border-color:var(--wa-dark)}
-.btn-wa svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
-.hero-stats{display:flex;flex-direction:column;gap:2.5rem}
-.stat-item{border-left:2px solid var(--warm);padding-left:1.5rem}
-.stat-num{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:700;line-height:1;color:var(--accent)}
-.stat-label{font-size:0.78rem;color:var(--muted);letter-spacing:0.05em;margin-top:0.25rem}
-.hero-quote{
-  font-family:'Fraunces',serif;font-size:1.05rem;font-style:italic;
-  color:var(--ink);line-height:1.7;border-top:1px solid var(--warm);
-  padding-top:1.5rem;margin-top:1.5rem;
+.hero-actions{display:flex;flex-direction:column;gap:0.75rem;align-items:flex-end}
+.btn-main{
+  display:inline-block;
+  padding:0.9rem 2.2rem;
+  background:var(--rust);color:var(--white);
+  text-decoration:none;font-size:0.75rem;
+  letter-spacing:0.15em;text-transform:uppercase;font-weight:700;
+  transition:all 0.25s;
+}
+.btn-main:hover{background:var(--rust-light);transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-block;
+  padding:0.9rem 2.2rem;
+  border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);
+  text-decoration:none;font-size:0.75rem;
+  letter-spacing:0.15em;text-transform:uppercase;font-weight:500;
+  transition:all 0.25s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);color:var(--white)}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-hint{
+  position:absolute;right:3.5rem;top:50%;
+  transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.8rem;
+  opacity:0.3;
+}
+.scroll-hint-text{
+  font-family:'Space Mono',monospace;
+  font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;
+  writing-mode:vertical-rl;color:var(--white);
+}
+.scroll-arrow{
+  width:1px;height:60px;
+  background:linear-gradient(to bottom,transparent,var(--white));
+  animation:scrollpulse 2s ease-in-out infinite;
+}
+@keyframes scrollpulse{
+  0%,100%{opacity:0.3;transform:scaleY(0.8)}
+  50%{opacity:1;transform:scaleY(1)}
+}
+
+/* ── MARQUEE STRIP ── */
+.marquee-strip{
+  background:var(--rust);
+  overflow:hidden;padding:1rem 0;
+  position:relative;z-index:10;
+}
+.marquee-track{
+  display:flex;gap:0;animation:marquee 25s linear infinite;
+}
+.marquee-item{
+  white-space:nowrap;
+  font-family:'Instrument Serif',serif;
+  font-size:1.8rem;font-style:italic;
+  color:rgba(255,255,255,0.15);padding:0 3rem;
+  flex-shrink:0;
+}
+.marquee-item span{color:rgba(255,255,255,0.9)}
+@keyframes marquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 
 /* ── SECTION BASE ── */
-.section{padding:6rem 3rem}
-.container{max-width:1100px;margin:0 auto}
-.section-label{
-  font-family:'DM Mono',monospace;font-size:0.72rem;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;
+.section{padding:8rem 3.5rem}
+.container{max-width:1200px;margin:0 auto}
+.s-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--rust-light);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.8rem;
 }
-.section-label::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
-.section-title{
-  font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:3rem;
+.s-label::before{content:'';display:block;width:28px;height:1px;background:var(--rust)}
+.s-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  line-height:1;letter-spacing:-0.02em;
+  margin-bottom:4rem;
 }
+.s-title em{font-style:italic;color:var(--gold)}
 
-/* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.about-text p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:1.5rem}
-.skill-group{margin-bottom:2rem}
-.skill-group-title{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
-.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
-.skill-tag{
-  padding:0.4rem 0.9rem;border:1px solid var(--warm);
-  font-size:0.8rem;color:var(--muted);
-  transition:all 0.2s;cursor:default;
+/* ── ABOUT / PHILOSOPHY ── */
+.about-section{background:var(--page);color:var(--void)}
+.about-section .s-label{color:var(--rust)}
+.about-section .s-label::before{background:var(--rust)}
+.about-section .s-title em{color:var(--rust)}
+.philosophy-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:6rem;align-items:start}
+.philosophy-lead{
+  font-family:'Instrument Serif',serif;
+  font-size:1.8rem;line-height:1.45;font-style:italic;
+  color:var(--void);margin-bottom:2rem;
 }
-.skill-tag:hover{border-color:var(--gold);color:var(--gold)}
-.lang-row{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--warm)}
-.lang-name{font-size:0.9rem;font-weight:600}
-.lang-level{font-size:0.8rem;color:var(--muted)}
+.philosophy-body{
+  font-size:1rem;line-height:1.85;color:#4a4540;
+  margin-bottom:1.5rem;font-weight:300;
+}
+.philosophy-body strong{color:var(--void);font-weight:700}
+.craft-stack{display:flex;flex-direction:column;gap:0}
+.craft-item{
+  border-top:1px solid rgba(0,0,0,0.1);
+  padding:1.5rem 0;
+  display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;
+}
+.craft-num{
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;color:rgba(0,0,0,0.25);
+  padding-top:0.2rem;
+}
+.craft-name{
+  font-size:0.9rem;font-weight:700;color:var(--void);
+  margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.05em;
+}
+.craft-desc{font-size:0.85rem;line-height:1.6;color:#6a6560}
+.lang-grid{display:flex;flex-direction:column;gap:0;margin-top:2rem}
+.lang-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 0;border-top:1px solid rgba(0,0,0,0.1);
+}
+.lang-name{font-size:0.9rem;font-weight:700}
+.lang-bar{flex:1;margin:0 2rem;height:2px;background:rgba(0,0,0,0.08)}
+.lang-fill{height:100%;background:var(--rust)}
+.lang-level{font-family:'Space Mono',monospace;font-size:0.65rem;color:#8a8279;letter-spacing:0.1em}
 
 /* ── WORK ── */
-.work-section{background:var(--ink);color:var(--paper)}
-.work-section .section-label{color:var(--gold-light)}
-.work-section .section-label::before{background:var(--gold-light)}
-.work-section .section-title{color:var(--paper)}
-.work-grid{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.1)}
-.work-card{
-  background:var(--ink);padding:2.5rem;
-  display:grid;grid-template-columns:80px 1fr auto;gap:2rem;align-items:start;
-  transition:background 0.2s;
+.work-section{background:var(--void)}
+.work-count{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(6rem,15vw,16rem);
+  line-height:0.85;
+  -webkit-text-stroke:1px rgba(255,255,255,0.06);
+  color:transparent;
+  position:absolute;right:3.5rem;top:7rem;
+  pointer-events:none;letter-spacing:-0.05em;
 }
-.work-card:hover{background:rgba(255,255,255,0.03)}
-.work-num{
-  font-family:'DM Mono',monospace;font-size:0.75rem;
-  color:rgba(255,255,255,0.25);padding-top:0.2rem;
-}
-.work-type{
-  font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--gold-light);margin-bottom:0.75rem;
-}
-.work-title{
-  font-family:'Fraunces',serif;font-size:1.4rem;
-  font-weight:700;color:var(--paper);margin-bottom:0.75rem;letter-spacing:-0.02em;
-}
-.work-desc{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.55);max-width:500px}
-.work-meta{text-align:right;font-size:0.8rem;color:rgba(255,255,255,0.35);white-space:nowrap}
+.work-header{position:relative;margin-bottom:5rem}
+.work-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.05)}
 
-/* ── PORTFOLIO — DUA KARYA BERDAMPINGAN ── */
-.piece-section{background:var(--warm)}
-.piece-duo{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.piece-card{
-  background:var(--paper);border:1px solid rgba(0,0,0,0.08);
-  overflow:hidden;display:flex;flex-direction:column;
+.piece{
+  background:var(--void);
+  padding:3.5rem;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  transition:background 0.3s;
+  position:relative;
+  overflow:hidden;
 }
-.piece-header{
-  padding:2.5rem 2.5rem 2rem;border-bottom:1px solid var(--warm);
-  display:flex;flex-direction:column;gap:1rem;
+.piece::after{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:0;
+  background:linear-gradient(to right,rgba(192,65,10,0.08),transparent);
+  transition:width 0.4s ease;
 }
-.piece-header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
-.piece-type{
-  font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:0.75rem;font-family:'DM Mono',monospace;
+.piece:hover::after{width:100%}
+.piece:hover{background:rgba(255,255,255,0.015)}
+
+.piece-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:2rem;
+}
+.piece-tag{
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--rust-light);
+  border:1px solid rgba(192,65,10,0.3);
+  padding:0.3rem 0.8rem;
+}
+.piece-date{
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.15em;
+  color:var(--fog);
 }
 .piece-title{
-  font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.2vw,1.9rem);
-  font-weight:700;letter-spacing:-0.03em;line-height:1.2;
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(1.8rem,3vw,2.8rem);
+  line-height:1.1;letter-spacing:-0.02em;
+  margin-bottom:1.5rem;
 }
-.piece-title em{font-style:italic;color:var(--accent)}
-.piece-badge{
-  padding:0.35rem 0.9rem;border:1px solid var(--warm);
-  font-size:0.72rem;color:var(--muted);white-space:nowrap;flex-shrink:0;
+.piece-title em{font-style:italic;color:var(--gold)}
+
+.piece-body{
+  display:grid;grid-template-columns:1fr 340px;
+  gap:4rem;align-items:start;margin-top:2rem;
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);
 }
-.piece-body{display:flex;flex-direction:column;flex:1}
-.piece-excerpt{padding:2.5rem;border-bottom:1px solid var(--warm)}
-.excerpt-label{
-  font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:1.25rem;
+.piece-pull{
+  font-family:'Instrument Serif',serif;
+  font-size:1.2rem;font-style:italic;
+  line-height:1.6;color:rgba(253,252,250,0.55);
+  border-left:2px solid var(--rust);
+  padding-left:1.5rem;margin-bottom:1.5rem;
 }
-.excerpt-text{
-  font-family:'Fraunces',serif;font-size:1rem;font-weight:300;
-  line-height:1.9;color:var(--ink);font-style:italic;margin-bottom:1rem;
+.piece-analysis{
+  font-size:0.88rem;line-height:1.8;color:rgba(253,252,250,0.45);font-weight:300;
 }
-.excerpt-text:last-child{margin-bottom:0}
-.piece-sidebar{padding:2rem 2.5rem;flex:1}
-.sidebar-section{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--warm)}
-.sidebar-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.sidebar-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem}
-.sidebar-value{font-size:0.87rem;line-height:1.6;color:var(--ink)}
+.piece-analysis strong{color:var(--white);font-weight:500}
+
+.piece-sidebar{display:flex;flex-direction:column;gap:1.5rem}
+.sidebar-block{border-left:1px solid rgba(255,255,255,0.07);padding-left:1.2rem}
+.sidebar-key{
+  font-family:'Space Mono',monospace;
+  font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--fog);margin-bottom:0.5rem;
+}
+.sidebar-val{font-size:0.82rem;line-height:1.6;color:rgba(253,252,250,0.6)}
+.sidebar-val strong{color:var(--white)}
+.data-pills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.4rem}
+.data-pill{
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.05em;
+  background:rgba(192,65,10,0.12);
+  border:1px solid rgba(192,65,10,0.25);
+  color:var(--rust-light);
+  padding:0.25rem 0.6rem;
+}
+.tag-list{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.4rem}
 .tag{
-  display:inline-block;padding:0.25rem 0.65rem;
-  background:var(--warm);font-size:0.72rem;color:var(--muted);margin:0.2rem;
+  font-size:0.72rem;padding:0.25rem 0.7rem;
+  border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.45);
+}
+
+/* ── STATS BELT ── */
+.stats-belt{
+  background:var(--rust);
+  padding:4rem 3.5rem;
+}
+.stats-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;background:rgba(0,0,0,0.15);
+}
+.stat-box{
+  background:var(--rust);
+  padding:2.5rem 2rem;text-align:center;
+}
+.stat-big{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(3rem,6vw,5rem);
+  color:var(--white);line-height:1;margin-bottom:0.5rem;
+}
+.stat-small{
+  font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);font-weight:500;
 }
 
 /* ── ACHIEVEMENTS ── */
-.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
-.ach-card{padding:2rem;border:1px solid var(--warm);transition:border-color 0.2s}
-.ach-card:hover{border-color:var(--gold)}
-.ach-icon{
-  width:40px;height:40px;background:var(--ink);color:var(--paper);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-bottom:1.5rem;
+.ach-section{background:var(--cream);color:var(--void)}
+.ach-section .s-label{color:var(--rust)}
+.ach-section .s-label::before{background:var(--rust)}
+.ach-section .s-title em{color:var(--rust)}
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(0,0,0,0.1)}
+.ach-card{
+  background:var(--cream);
+  padding:3rem;
+  transition:background 0.2s;
+  position:relative;overflow:hidden;
 }
-.ach-title{font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;line-height:1.4}
-.ach-subtitle{font-size:0.82rem;color:var(--muted);line-height:1.5}
+.ach-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--rust);transform:scaleX(0);transform-origin:left;
+  transition:transform 0.4s ease;
+}
+.ach-card:hover::before{transform:scaleX(1)}
+.ach-card:hover{background:#e8e4d5}
+.ach-icon{
+  font-family:'Instrument Serif',serif;
+  font-size:3.5rem;color:rgba(0,0,0,0.1);
+  margin-bottom:1.2rem;line-height:1;
+}
+.ach-name{
+  font-size:0.65rem;font-family:'Space Mono',monospace;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--rust);margin-bottom:0.75rem;
+}
+.ach-title{
+  font-family:'Instrument Serif',serif;
+  font-size:1.35rem;color:var(--void);
+  line-height:1.3;margin-bottom:0.6rem;
+}
+.ach-desc{font-size:0.85rem;color:#6a6560;line-height:1.6}
+
+/* ── APPROACH (process) ── */
+.approach-section{background:var(--void)}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.05)}
+.approach-card{
+  background:var(--void);
+  padding:3rem 2.5rem;
+  border-bottom:2px solid transparent;
+  transition:border-color 0.3s;
+}
+.approach-card:hover{border-color:var(--rust)}
+.approach-n{
+  font-family:'Instrument Serif',serif;
+  font-size:4rem;line-height:1;
+  -webkit-text-stroke:1px rgba(255,255,255,0.1);
+  color:transparent;margin-bottom:1.5rem;
+}
+.approach-title{
+  font-size:1rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+.approach-desc{font-size:0.85rem;line-height:1.7;color:var(--fog)}
 
 /* ── CONTACT ── */
-.contact-section{background:var(--ink);color:var(--paper);text-align:center;padding:6rem 3rem}
-.contact-section .section-label{color:var(--gold-light);justify-content:center}
-.contact-section .section-label::before{display:none}
-.contact-title{
-  font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,5rem);
-  font-weight:700;letter-spacing:-0.04em;line-height:1;margin-bottom:2rem;
+.contact-section{
+  background:var(--void);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:8rem 3.5rem;
 }
-.contact-title em{font-style:italic;color:var(--gold-light)}
-.contact-sub{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:3rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
-.contact-info{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-bottom:3rem}
-.contact-item-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem}
-.contact-item-value{font-size:0.95rem;color:var(--paper)}
-.contact-item-value a{color:var(--gold-light);text-decoration:none}
-.contact-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
-.contact-section .btn-primary{background:transparent;border-color:rgba(255,255,255,0.3);color:var(--paper)}
-.contact-section .btn-primary:hover{background:var(--gold);border-color:var(--gold);color:var(--paper)}
-
-/* ── FLOATING WA BUTTON ── */
-.wa-float{
-  position:fixed;bottom:2rem;right:2rem;z-index:200;
-  width:56px;height:56px;border-radius:50%;
-  background:var(--wa-green);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px rgba(37,211,102,0.4);
-  transition:all 0.25s;text-decoration:none;
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.contact-headline{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  line-height:1;letter-spacing:-0.02em;margin-bottom:1.5rem;
 }
-.wa-float:hover{background:var(--wa-dark);transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
-.wa-float svg{width:28px;height:28px;fill:#fff}
-.wa-float-tooltip{
-  position:absolute;right:68px;
-  background:var(--ink);color:var(--paper);
-  font-size:0.75rem;padding:0.4rem 0.85rem;
-  white-space:nowrap;opacity:0;transform:translateX(8px);
-  transition:all 0.2s;pointer-events:none;
+.contact-headline em{font-style:italic;color:var(--gold)}
+.contact-sub{
+  font-size:0.95rem;line-height:1.8;color:var(--fog);font-weight:300;
+  margin-bottom:3rem;
 }
-.wa-float:hover .wa-float-tooltip{opacity:1;transform:translateX(0)}
+.contact-links{display:flex;flex-direction:column;gap:0}
+.contact-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 0;border-top:1px solid rgba(255,255,255,0.06);
+}
+.contact-key{
+  font-family:'Space Mono',monospace;
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--fog);
+}
+.contact-val a,
+.contact-val{
+  font-size:0.9rem;color:var(--white);text-decoration:none;
+  transition:color 0.2s;
+}
+.contact-val a:hover{color:var(--rust-light)}
+.contact-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}
 
 /* ── FOOTER ── */
 footer{
-  background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);
-  padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  border-top:1px solid rgba(255,255,255,0.05);
+  padding:2rem 3.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  max-width:none;
 }
-footer p{font-size:0.78rem;color:rgba(255,255,255,0.3)}
+.footer-copy{
+  font-family:'Space Mono',monospace;
+  font-size:0.62rem;letter-spacing:0.12em;color:var(--fog);
+}
+.footer-right{
+  display:flex;gap:2.5rem;align-items:center;
+}
+.footer-right a{
+  font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--fog);text-decoration:none;transition:color 0.2s;
+}
+.footer-right a:hover{color:var(--white)}
 
-/* ── ANIMATION ── */
-.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
+/* ── FADE IN ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .piece-duo{grid-template-columns:1fr}
-}
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}.nav-links{gap:1rem}
-  .hero{padding:7rem 1.5rem 4rem}
-  .hero-inner,.about-grid{grid-template-columns:1fr}
-  .hero-stats{flex-direction:row;flex-wrap:wrap}
-  .work-card{grid-template-columns:1fr}.work-num{display:none}.work-meta{text-align:left}
-  .section{padding:4rem 1.5rem}
-  footer{padding:1.5rem}
-  .piece-header-top{flex-direction:column}
-  .wa-float{bottom:1.5rem;right:1.5rem}
+  nav{padding:1.2rem 1.5rem}
+  .hero{padding:0 1.5rem 4rem}
+  .hero-foot{grid-template-columns:1fr;gap:2rem}
+  .hero-actions{align-items:flex-start}
+  .section{padding:5rem 1.5rem}
+  .philosophy-grid{grid-template-columns:1fr;gap:3rem}
+  .piece{padding:2rem}
+  .piece-body{grid-template-columns:1fr;gap:2rem}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .ach-grid{grid-template-columns:1fr}
+  .approach-grid{grid-template-columns:1fr}
+  .contact-inner{grid-template-columns:1fr;gap:3rem}
+  .work-count{display:none}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+  .footer-right{justify-content:center}
 }
 </style>
 </head>
 <body>
 
-<!-- ░░ FLOATING WHATSAPP BUTTON ░░ -->
-<a class="wa-float" href="https://wa.me/6285710763808?text=Halo%20Risyad%2C%20saya%20tertarik%20untuk%20berkolaborasi%20dengan%20kamu!" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
-  <span class="wa-float-tooltip">Chat di WhatsApp</span>
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<!-- ░░ NAV ░░ -->
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">Muhammad Risyad</div>
+  <a class="nav-logo" href="#">M. Risyad</a>
   <div class="nav-links">
-    <a href="#about">Tentang</a>
-    <a href="#work">Pengalaman</a>
-    <a href="#portfolio">Karya</a>
-    <a href="#contact">Kontak</a>
+    <a href="#work">Work</a>
+    <a href="#approach">Approach</a>
+    <a href="#achievements">Wins</a>
+    <a href="#contact" class="nav-cta">Hire Me</a>
   </div>
 </nav>
 
-<!-- ░░ HERO ░░ -->
-<section class="hero">
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <!-- Ticker -->
+  <div class="hero-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Copywriter <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Content Strategist <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Culture Writer <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Brand Storyteller <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Digital Advocate <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">French Language Specialist <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Copywriter <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Content Strategist <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Culture Writer <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Brand Storyteller <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Digital Advocate <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">French Language Specialist <span class="ticker-dot">◆</span></span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-hint-text">Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+
   <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Creative Copywriter</div>
-      <h1 class="hero-name">Muhammad<br><em>Risyad</em></h1>
-      <p class="hero-title">Content Strategist · Multilingual Communicator</p>
-      <p class="hero-bio">Merancang narasi yang bukan sekadar dibaca — tapi dirasakan. Dua tahun mengubah ide menjadi kata-kata yang menggerakkan audiens.</p>
-      <div class="hero-cta">
-        <a href="#portfolio" class="btn-primary">Lihat Karya</a>
-        <a href="https://wa.me/6285710763808?text=Halo%20Risyad%2C%20saya%20tertarik%20untuk%20berkolaborasi%20dengan%20kamu!" target="_blank" class="btn-wa">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-      </div>
-      <div class="hero-quote">
-        "Kata yang tepat bukan hanya menyampaikan pesan — ia membangun kepercayaan."
-      </div>
+    <div class="hero-kicker">
+      <div class="hero-kicker-line"></div>
+      <div class="hero-kicker-text">Universitas Negeri Yogyakarta · Est. 2003</div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">2+</div><div class="stat-label">Tahun pengalaman freelance</div></div>
-      <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Klien dari berbagai industri</div></div>
-      <div class="stat-item"><div class="stat-num">40%</div><div class="stat-label">Rata-rata peningkatan engagement</div></div>
-      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Bahasa yang dikuasai</div></div>
+    <h1 class="hero-name">
+      <span class="first">Muhammad</span>
+      <span class="last">Risyad.</span>
+    </h1>
+    <div class="hero-foot">
+      <p class="hero-bio">
+        Copywriter and content strategist who writes at the intersection of <strong>culture, data, and digital behavior.</strong> Based between Banten and Yogyakarta — thinking globally, writing for real people.
+      </p>
+      <div class="hero-role">
+        <div class="hero-role-label">Currently</div>
+        <div class="hero-role-value">Open to opportunities</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#work" class="btn-main">View Work</a>
+        <a href="#contact" class="btn-ghost">Let's Talk</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ ABOUT ░░ -->
-<section class="section" id="about">
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Words that <span>Work</span></span>
+    <span class="marquee-item">Stories that <span>Stick</span></span>
+    <span class="marquee-item">Content with <span>Context</span></span>
+    <span class="marquee-item">Culture-literate <span>Copy</span></span>
+    <span class="marquee-item">Words that <span>Work</span></span>
+    <span class="marquee-item">Stories that <span>Stick</span></span>
+    <span class="marquee-item">Content with <span>Context</span></span>
+    <span class="marquee-item">Culture-literate <span>Copy</span></span>
+  </div>
+</div>
+
+<!-- ABOUT / PHILOSOPHY -->
+<section class="section about-section" id="about">
   <div class="container">
-    <div class="section-label">Tentang Saya</div>
-    <div class="about-grid">
-      <div class="about-text">
-        <h2 class="section-title">Kata adalah<br>senjata saya.</h2>
-        <p>Saya adalah seorang Creative Copywriter yang percaya bahwa konten terbaik lahir dari perpaduan antara riset mendalam, empati terhadap audiens, dan keberanian bereksperimen dengan bahasa.</p>
-        <p>Saat ini tengah menempuh pendidikan Pendidikan Bahasa Prancis di Universitas Negeri Yogyakarta — karena bagi saya, memahami bahasa berarti memahami cara manusia berpikir dan merasakan.</p>
-        <p>Dari copywriting iklan hingga artikel feature panjang, saya menulis dengan satu tujuan: membuat pembaca merasakan sesuatu yang kemudian mendorong mereka untuk bertindak.</p>
-      </div>
+    <div class="s-label">Philosophy</div>
+    <div class="philosophy-grid">
       <div>
-        <div class="skill-group">
-          <div class="skill-group-title">Keahlian Utama</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Creative Storytelling</span>
-            <span class="skill-tag">Brand Voice</span>
-            <span class="skill-tag">SEO Writing</span>
-            <span class="skill-tag">Content Strategy</span>
-            <span class="skill-tag">Narrative Development</span>
-            <span class="skill-tag">Email Marketing</span>
+        <p class="philosophy-lead">
+          "In a digital industry crowded with noise, the winner isn't who posts the most — it's who earns the most trust."
+        </p>
+        <p class="philosophy-body">
+          I write copy that treats readers as intelligent human beings, not conversion targets. Every piece I produce starts with a question: <strong>who is this really for?</strong> Then I build outward — from empathy to argument, from culture to craft.
+        </p>
+        <p class="philosophy-body">
+          My background in French Language Education at UNY trained me to think in registers: how meaning shifts across contexts, how tone signals intent, how a single word choice can open or shut a door. That's not a language skill — it's a copywriting superpower.
+        </p>
+
+        <div class="lang-grid" style="margin-top:3rem">
+          <div class="s-label" style="margin-bottom:1rem">Languages</div>
+          <div class="lang-item">
+            <span class="lang-name">Indonesian</span>
+            <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">English</span>
+            <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+            <span class="lang-level">Professional</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">French</span>
+            <div class="lang-bar"><div class="lang-fill" style="width:65%"></div></div>
+            <span class="lang-level">Academic</span>
           </div>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Soft Skills</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Public Relations</span>
-            <span class="skill-tag">Research & Analysis</span>
-            <span class="skill-tag">Critical Thinking</span>
-            <span class="skill-tag">Social Intelligence</span>
+      </div>
+
+      <div class="craft-stack">
+        <div class="s-label" style="margin-bottom:0.5rem">What I Do</div>
+        <div class="craft-item reveal">
+          <div class="craft-num">01</div>
+          <div>
+            <div class="craft-name">Brand Copywriting</div>
+            <div class="craft-desc">Taglines, campaign copy, brand voice guidelines. Words that sound like you — only sharper.</div>
           </div>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Kemampuan Bahasa</div>
-          <div class="lang-row"><span class="lang-name">Bahasa Indonesia</span><span class="lang-level">Native</span></div>
-          <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Intermediate (B1–B2)</span></div>
-          <div class="lang-row"><span class="lang-name">Français</span><span class="lang-level">Beginner (A1–A2)</span></div>
+        <div class="craft-item reveal reveal-delay-1">
+          <div class="craft-num">02</div>
+          <div>
+            <div class="craft-name">Feature & Editorial</div>
+            <div class="craft-desc">Long-form analysis, trend pieces, and opinion essays rooted in research and cultural insight.</div>
+          </div>
+        </div>
+        <div class="craft-item reveal reveal-delay-2">
+          <div class="craft-num">03</div>
+          <div>
+            <div class="craft-name">Social & Content Strategy</div>
+            <div class="craft-desc">Platform-native content informed by how Gen Z actually consumes and shares information.</div>
+          </div>
+        </div>
+        <div class="craft-item reveal reveal-delay-3">
+          <div class="craft-num">04</div>
+          <div>
+            <div class="craft-name">Advocacy & Culture Writing</div>
+            <div class="craft-desc">Words designed not just to inform, but to shift perspectives and spark conversations that matter.</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ WORK ░░ -->
+<!-- STATS -->
+<div class="stats-belt">
+  <div class="stats-inner">
+    <div class="stat-box reveal">
+      <div class="stat-big">9M+</div>
+      <div class="stat-small">Indonesian Students I Wrote For</div>
+    </div>
+    <div class="stat-box reveal reveal-delay-1">
+      <div class="stat-big">1.4M</div>
+      <div class="stat-small">Views on Culture Content Risyad Analysed</div>
+    </div>
+    <div class="stat-box reveal reveal-delay-2">
+      <div class="stat-big">3</div>
+      <div class="stat-small">Languages in Active Rotation</div>
+    </div>
+    <div class="stat-box reveal reveal-delay-3">
+      <div class="stat-big">4×</div>
+      <div class="stat-small">Faster Market Growth Than General FMCG</div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
 <section class="section work-section" id="work">
+  <div class="container" style="position:relative">
+    <div class="work-header">
+      <div class="s-label">Selected Work</div>
+      <h2 class="s-title">Two pieces.<br><em>Two entirely different worlds.</em><br>Same obsession: truth.</h2>
+      <div class="work-count">02</div>
+    </div>
+
+    <div class="work-list">
+
+      <!-- PIECE 01: K-Beauty -->
+      <div class="piece reveal">
+        <div class="piece-meta">
+          <span class="piece-tag">Feature Article · Beauty & Digital Media</span>
+          <span class="piece-date">April 2026 · Sociolla / Beauty Journal</span>
+        </div>
+        <h3 class="piece-title">
+          Learning K-Beauty Should Feel Like Talking<br>to Your <em>Most Knowledgeable Friend</em>
+        </h3>
+
+        <div class="piece-body">
+          <div>
+            <p class="piece-pull">
+              "In the K-beauty content space, the winner isn't whoever posts the most — it's whoever earns the most trust. Beauty Journal proved empathy beats authority every time."
+            </p>
+            <p class="piece-analysis">
+              This deep-dive feature examines how <strong>Beauty Journal by Sociolla</strong> cracked the code for Indonesian Gen Z beauty consumers — not by teaching harder, but by talking warmer. The piece coins and analyzes the platform's core content framework: <strong>"Bestie-Talk"</strong>, a communication style that swaps instructional rigidity for organic, friend-to-friend language.
+            </p>
+            <br>
+            <p class="piece-analysis">
+              Where competitors explained <em>glass skin</em> in technical terms, Beauty Journal wrote: <strong>"Just tap with your fingers for a more natural look, like you just ate an ice lolly."</strong> One sentence containing technique, visual outcome, and instant relatability. That's not a writing accident — that's editorial intelligence backed by consumer psychology research on beginner anxiety.
+            </p>
+            <br>
+            <p class="piece-analysis">
+              The piece also breaks down the platform's most strategically valuable innovation: <strong>cloud skin</strong> — a localized reinterpretation of glass skin that swaps heavy highlighter layers for a dewy-matte finish suited to Indonesia's humid, high-heat climate. This is what separates genuine cultural adaptation from surface-level translation.
+            </p>
+          </div>
+
+          <div class="piece-sidebar">
+            <div class="sidebar-block">
+              <div class="sidebar-key">Core Argument</div>
+              <div class="sidebar-val">In beauty content, <strong>empathy is a bigger competitive moat than production value.</strong> Trust compounds; ad budgets don't.</div>
+            </div>
+            <div class="sidebar-block">
+              <div class="sidebar-key">Market Data Used</div>
+              <div class="data-pills">
+                <span class="data-pill">86% Gen Z on TikTok/IG</span>
+                <span class="data-pill">54% buyers are Gen Z</span>
+                <span class="data-pill">77% read reviews first</span>
+                <span class="data-pill">9.5% CAGR 2026–2035</span>
+                <span class="data-pill">+50% Sociolla Revenue</span>
+              </div>
+            </div>
+            <div class="sidebar-block">
+              <div class="sidebar-key">Techniques Analyzed</div>
+              <div class="tag-list">
+                <span class="tag">Glass Skin</span>
+                <span class="tag">Gradient Lips</span>
+                <span class="tag">Aegyo-sal</span>
+                <span class="tag">Cloud Skin (Local)</span>
+              </div>
+            </div>
+            <div class="sidebar-block">
+              <div class="sidebar-key">Approach</div>
+              <div class="sidebar-val">Primary & secondary research · competitor analysis · consumer behavior synthesis · editorial narrative</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIECE 02: Academic Silence -->
+      <div class="piece reveal">
+        <div class="piece-meta">
+          <span class="piece-tag">Opinion & Cultural Essay · Education / Digital Media</span>
+          <span class="piece-date">April 2026 · Original Academic Research, UNY</span>
+        </div>
+        <h3 class="piece-title">
+          The Library Nobody Opens: When <em>Universities</em><br>Silence Their Own Generation
+        </h3>
+
+        <div class="piece-body">
+          <div>
+            <p class="piece-pull">
+              "Student academic work is objectified cultural capital — high-value intellectual output left to decay not because of limited ideas, but because of limited systems."
+            </p>
+            <p class="piece-analysis">
+              This essay argues one of the most uncomfortable truths in Indonesian higher education: every semester, <strong>tens of millions of documents</strong> — essays on poverty, poems about inequality, analyses of vanishing local cultures — are created and destroyed inside a bureaucratic loop that never touches public life. The piece reframes this not as academic waste, but as a <strong>cultural crisis we've normalized</strong>.
+            </p>
+            <br>
+            <p class="piece-analysis">
+              The argument hinges on a powerful paradox: <strong>Generation Z is the most digitally fluent generation in human history</strong>, yet the deeper they go into higher education, the more thoroughly the system seals them into what the essay calls a "soundproof room" — assignments written for one person, graded by one person, and then permanently silenced. Risyad challenges the "Strawberry Generation" label not by defending Gen Z, but by asking who created the fragility.
+            </p>
+            <br>
+            <p class="piece-analysis">
+              The piece draws on real cases — a literature student's poem about migrant wages reaching <strong>1.4 million views</strong>, an anthropology thread about dying regional languages cited in parliament — as proof that the format of <em>narrative-digital-advocacy content</em> has power no 200-page policy report possesses. It closes with a concrete proposal rooted in international "renewable assignment" models, asking campuses to choose: <strong>prison or stage</strong>?
+            </p>
+          </div>
+
+          <div class="piece-sidebar">
+            <div class="sidebar-block">
+              <div class="sidebar-key">Core Argument</div>
+              <div class="sidebar-val"><strong>Academic systems produce cultural capital, then destroy it.</strong> Digital platforms offer an exit — but only if institutions are brave enough to use them.</div>
+            </div>
+            <div class="sidebar-block">
+              <div class="sidebar-key">Context & Scale</div>
+              <div class="data-pills">
+                <span class="data-pill">9M+ Active Students</span>
+                <span class="data-pill">10 Works/Semester Each</span>
+                <span class="data-pill">27% of Indonesia is Gen Z</span>
+                <span class="data-pill">1.4M views — viral poetry case</span>
+              </div>
+            </div>
+            <div class="sidebar-block">
+              <div class="sidebar-key">Rhetorical Moves</div>
+              <div class="tag-list">
+                <span class="tag">Vivid metaphor</span>
+                <span class="tag">Statistical framing</span>
+                <span class="tag">Case study</span>
+                <span class="tag">Comparative (intl.)</span>
+                <span class="tag">Direct challenge</span>
+              </div>
+            </div>
+            <div class="sidebar-block">
+              <div class="sidebar-key">Adapted From</div>
+              <div class="sidebar-val">Original academic research, French Language Education Dept., Universitas Negeri Yogyakarta, 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section approach-section" id="approach">
   <div class="container">
-    <div class="section-label">Pengalaman</div>
-    <h2 class="section-title" style="color:var(--paper)">Jejak<br>profesional.</h2>
-    <div class="work-grid">
-      <div class="work-card fade-in">
-        <div class="work-num">01</div>
-        <div>
-          <div class="work-type">Copywriter & Content Creator</div>
-          <div class="work-title">Freelance · Multiple Clients</div>
-          <div class="work-desc">Mengembangkan strategi konten untuk 10+ klien di sektor pendidikan, lifestyle, dan media sosial. Spesialis storytelling untuk website, social media, email marketing, dan materi iklan. Rata-rata meningkatkan engagement audiens sebesar 40%.</div>
-        </div>
-        <div class="work-meta">2023 – Sekarang</div>
+    <div class="s-label">How I Work</div>
+    <h2 class="s-title" style="margin-bottom:3rem">Three moves.<br><em>Every single time.</em></h2>
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <div class="approach-n">01</div>
+        <div class="approach-title">Listen Before Writing</div>
+        <div class="approach-desc">I don't start with sentences. I start with research — the audience's fears, their vocabulary, their trust triggers. Copy written without this is just noise.</div>
       </div>
-      <div class="work-card fade-in">
-        <div class="work-num">02</div>
-        <div>
-          <div class="work-type">Article Writer</div>
-          <div class="work-title">IMASPI (Asosiasi Mahasiswa Prancis Nasional)</div>
-          <div class="work-desc">Memproduksi konten literasi bahasa Prancis dan budaya untuk audiens mahasiswa nasional, menggabungkan keahlian linguistik dengan wawasan budaya.</div>
-        </div>
-        <div class="work-meta">2025 – 2026</div>
+      <div class="approach-card reveal reveal-delay-1">
+        <div class="approach-n">02</div>
+        <div class="approach-title">Anchor in Specifics</div>
+        <div class="approach-desc">Vague claims die. Specific details stick. "86% of Gen Z relies on TikTok for beauty info" is more persuasive than "young people love social media." I work in specifics.</div>
       </div>
-      <div class="work-card fade-in">
-        <div class="work-num">03</div>
-        <div>
-          <div class="work-type">Staff · Career & Student Works</div>
-          <div class="work-title">BEM Universitas Negeri Yogyakarta</div>
-          <div class="work-desc">Mengelola program pengembangan keterampilan mahasiswa dan mengkurasi karya-karya kreatif, serta mengkoordinasikan inisiatif pengembangan karier mahasiswa.</div>
-        </div>
-        <div class="work-meta">2025 – 2026</div>
-      </div>
-      <div class="work-card fade-in">
-        <div class="work-num">04</div>
-        <div>
-          <div class="work-type">Public Relations & Media</div>
-          <div class="work-title">Himpunan Prancis UNY</div>
-          <div class="work-desc">Mengelola komunikasi eksternal dan kehadiran media sosial untuk meningkatkan keterlibatan anggota, sekaligus mengembangkan pesan strategis untuk memperkuat citra organisasi.</div>
-        </div>
-        <div class="work-meta">2025 – 2026</div>
+      <div class="approach-card reveal reveal-delay-2">
+        <div class="approach-n">03</div>
+        <div class="approach-title">Write for the Human, Not the Algorithm</div>
+        <div class="approach-desc">Algorithms change. Human psychology doesn't. I write for what makes people lean forward, not what makes dashboards tick — and the best copy does both.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ PORTFOLIO — DUA KARYA BERDAMPINGAN ░░ -->
-<section class="section piece-section" id="portfolio">
+<!-- ACHIEVEMENTS -->
+<section class="section ach-section" id="achievements">
   <div class="container">
-    <div class="section-label">Karya Pilihan</div>
-    <h2 class="section-title">Tulisan yang<br>berbicara sendiri.</h2>
-
-    <div class="piece-duo">
-
-      <!-- KARYA 1: K-Beauty -->
-      <div class="piece-card fade-in">
-        <div class="piece-header">
-          <div class="piece-type">Feature Article · Beauty & Lifestyle · Sociolla / Beauty Journal</div>
-          <div class="piece-header-top">
-            <h3 class="piece-title">Belajar Makeup Korea Semudah<br>Ngobrol dengan <em>Sahabat</em></h3>
-            <div class="piece-badge">2025 · Bahasa Indonesia</div>
-          </div>
-        </div>
-        <div class="piece-body">
-          <div class="piece-excerpt">
-            <div class="excerpt-label">Kutipan Artikel</div>
-            <p class="excerpt-text">"Di industri konten kecantikan digital yang semakin ramai, pemenangnya bukan siapa yang paling banyak posting — melainkan siapa yang paling dipercaya."</p>
-            <p class="excerpt-text" style="font-size:0.92rem">"Kontekstualisasi semacam inilah yang membuat konten Beauty Journal terasa relevan dan bukan sekadar salinan dari sumber Korea. Ia bicara kepada perempuan Indonesia yang nyata, dengan kondisi kulit, cuaca, dan budget yang nyata pula."</p>
-          </div>
-          <div class="piece-sidebar">
-            <div class="sidebar-section">
-              <div class="sidebar-label">Tentang Karya Ini</div>
-              <div class="sidebar-value">Analisis mendalam tentang strategi konten Beauty Journal (Sociolla) dalam mengadaptasi tren K-Beauty untuk pasar Indonesia.</div>
-            </div>
-            <div class="sidebar-section">
-              <div class="sidebar-label">Pendekatan</div>
-              <div class="sidebar-value">Riset data primer & sekunder, analisis kompetitor, wawasan konsumen Gen Z Indonesia</div>
-            </div>
-            <div class="sidebar-section">
-              <div class="sidebar-label">Topik</div>
-              <div>
-                <span class="tag">K-Beauty</span><span class="tag">Beauty Journal</span>
-                <span class="tag">Sociolla</span><span class="tag">Konten Digital</span><span class="tag">Gen Z</span>
-              </div>
-            </div>
-            <div class="sidebar-section">
-              <div class="sidebar-label">Data yang Diangkat</div>
-              <div class="sidebar-value">86% Gen Z · 54% pembeli online · 77% baca review · Pertumbuhan pasar 16%</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KARYA 2: Tugas Kuliah -->
-      <div class="piece-card fade-in">
-        <div class="piece-header">
-          <div class="piece-type">Opini & Esai Budaya · Pendidikan Tinggi · Media Digital</div>
-          <div class="piece-header-top">
-            <h3 class="piece-title">Tugas Kuliah yang Mati di <em>Laci:</em> Ketika Kampus Membunuh Suara Generasinya</h3>
-            <div class="piece-badge">2026 · Bahasa Indonesia</div>
-          </div>
-        </div>
-        <div class="piece-body">
-          <div class="piece-excerpt">
-            <div class="excerpt-label">Kutipan Artikel</div>
-            <p class="excerpt-text">"Perpustakaan terkunci itu bernama: tugas kuliah. Puluhan juta dokumen lahir dan mati dalam putaran akademik yang tidak pernah bersentuhan dengan realitas sosial di luar kampus."</p>
-            <p class="excerpt-text" style="font-size:0.92rem">"Tugas akademik mahasiswa adalah objectified cultural capital — hasil intelektual bernilai tinggi yang dibiarkan membusuk karena keterbatasan sistem, bukan keterbatasan ide."</p>
-          </div>
-          <div class="piece-sidebar">
-            <div class="sidebar-section">
-              <div class="sidebar-label">Tentang Karya Ini</div>
-              <div class="sidebar-value">Esai advokasi tentang potensi karya tulis mahasiswa Indonesia yang terbuang dalam sistem birokrasi akademik, dan bagaimana platform digital bisa menjadi solusinya.</div>
-            </div>
-            <div class="sidebar-section">
-              <div class="sidebar-label">Pendekatan</div>
-              <div class="sidebar-value">Analisis sosial-budaya, studi kasus konten viral, komparasi kurikulum internasional</div>
-            </div>
-            <div class="sidebar-section">
-              <div class="sidebar-label">Topik</div>
-              <div>
-                <span class="tag">Budaya</span><span class="tag">Pendidikan</span>
-                <span class="tag">Generasi Z</span><span class="tag">Media Digital</span><span class="tag">Advokasi</span>
-              </div>
-            </div>
-            <div class="sidebar-section">
-              <div class="sidebar-label">Konteks</div>
-              <div class="sidebar-value">9 juta mahasiswa aktif · Karya ilmiah UNY 2026 · Diadaptasi untuk publikasi digital</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- .piece-duo -->
-  </div>
-</section>
-
-<!-- ░░ ACHIEVEMENTS ░░ -->
-<section class="section" id="achievements">
-  <div class="container">
-    <div class="section-label">Prestasi</div>
-    <h2 class="section-title">Diakui,<br>bukan hanya ditulis.</h2>
+    <div class="s-label">Recognition</div>
+    <h2 class="s-title">Recognized,<br>not just <em>written.</em></h2>
     <div class="ach-grid">
-      <div class="ach-card fade-in">
-        <div class="ach-icon">3</div>
-        <div class="ach-title">Juara 3 · Lomba Karya Ilmiah Remaja (KIR)</div>
-        <div class="ach-subtitle">Tingkat regional & nasional dalam kompetisi penulisan ilmiah</div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">3rd</div>
+        <div class="ach-name">National Competition</div>
+        <div class="ach-title">3rd Place · Scientific Paper Competition (KIR)</div>
+        <div class="ach-desc">Regional and national level. Competed in research writing — applying the same discipline that now shapes every fact-checked, evidence-rooted piece of copy I write.</div>
       </div>
-      <div class="ach-card fade-in">
+      <div class="ach-card reveal reveal-delay-1">
         <div class="ach-icon">★</div>
-        <div class="ach-title">Finalis · Festival Lomba Seni Siswa Nasional (FL2SN)</div>
-        <div class="ach-subtitle">Kategori Puisi tingkat nasional</div>
+        <div class="ach-name">National Arts Festival</div>
+        <div class="ach-title">National Finalist · FL2SN Poetry Category</div>
+        <div class="ach-desc">Festival Lomba Seni Siswa Nasional. Poetry at the national level — where every word is a choice and vagueness is the only unforgivable sin.</div>
       </div>
-      <div class="ach-card fade-in">
-        <div class="ach-icon">2</div>
-        <div class="ach-title">Juara 2 · Lomba Teater Francophone Provinsi</div>
-        <div class="ach-subtitle">Kompetisi teater berbahasa Prancis tingkat Provinsi Yogyakarta</div>
+      <div class="ach-card reveal reveal-delay-2">
+        <div class="ach-icon">2nd</div>
+        <div class="ach-name">Provincial Arts Competition</div>
+        <div class="ach-title">2nd Place · Francophone Theatre, Yogyakarta Province</div>
+        <div class="ach-desc">Performing and writing in French — developing the kind of tonal precision and register awareness that makes copy land differently across audiences.</div>
       </div>
-      <div class="ach-card fade-in">
+      <div class="ach-card reveal reveal-delay-3">
         <div class="ach-icon">✍</div>
-        <div class="ach-title">Karya Ilmiah Dipublikasikan</div>
-        <div class="ach-subtitle">Penelitian fenomena sosial parkir liar di Tangerang Selatan</div>
+        <div class="ach-name">Published Research</div>
+        <div class="ach-title">Peer-Published Academic Paper</div>
+        <div class="ach-desc">Research on illegal parking as a social phenomenon in South Tangerang — proof that rigorous methodology and compelling narrative aren't mutually exclusive.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ CONTACT ░░ -->
+<!-- CONTACT -->
 <section class="contact-section" id="contact">
-  <div class="container">
-    <div class="section-label">Kontak</div>
-    <h2 class="contact-title">Mari kita<br><em>berkolaborasi.</em></h2>
-    <p class="contact-sub">Punya proyek yang butuh kata-kata yang tepat? Saya siap mendengar dan membantu mewujudkannya.</p>
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="contact-item-label">Email</div>
-        <div class="contact-item-value"><a href="mailto:icad1404@gmail.com">icad1404@gmail.com</a></div>
+  <div class="container" style="max-width:none">
+    <div class="contact-inner">
+      <div>
+        <div class="s-label">Get In Touch</div>
+        <h2 class="contact-headline">Let's make<br>something <em>worth reading.</em></h2>
+        <p class="contact-sub">Looking for a copywriter who does the research, respects the reader, and delivers copy that earns trust — not just clicks? Let's talk.</p>
+        <div class="contact-actions">
+          <a href="mailto:icad1404@gmail.com" class="btn-main">Send Email</a>
+          <a href="https://wa.me/6285710763808?text=Hi%20Risyad%2C%20I%20found%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20project." target="_blank" class="btn-ghost">WhatsApp</a>
+        </div>
       </div>
-      <div class="contact-item">
-        <div class="contact-item-label">WhatsApp</div>
-        <div class="contact-item-value"><a href="https://wa.me/6285710763808" target="_blank">+62 857-1076-3808</a></div>
+
+      <div>
+        <div class="contact-links">
+          <div class="contact-row">
+            <span class="contact-key">Email</span>
+            <span class="contact-val"><a href="mailto:icad1404@gmail.com">icad1404@gmail.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">WhatsApp</span>
+            <span class="contact-val"><a href="https://wa.me/6285710763808" target="_blank">+62 857-1076-3808</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">Instagram</span>
+            <span class="contact-val"><a href="https://instagram.com/risyadadt._" target="_blank">@risyadadt._</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">Location</span>
+            <span class="contact-val">Banten · Yogyakarta, Indonesia</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">Status</span>
+            <span class="contact-val" style="color:var(--gold)">● Open for freelance & full-time</span>
+          </div>
+        </div>
       </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Lokasi</div>
-        <div class="contact-item-value">Banten / Yogyakarta</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Instagram</div>
-        <div class="contact-item-value"><a href="https://instagram.com/risyadadt._" target="_blank">@risyadadt._</a></div>
-      </div>
-    </div>
-    <div class="contact-btns">
-      <a href="mailto:icad1404@gmail.com" class="btn-primary">Kirim Email</a>
-      <a href="https://wa.me/6285710763808?text=Halo%20Risyad%2C%20saya%20tertarik%20untuk%20berkolaborasi%20dengan%20kamu!" target="_blank" rel="noopener" class="btn-wa">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Chat WhatsApp
-      </a>
     </div>
   </div>
 </section>
 
-<!-- ░░ FOOTER ░░ -->
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 Muhammad Risyad Aria Aditya</p>
-  <p>Creative Copywriter · Content Strategist · Yogyakarta</p>
+  <span class="footer-copy">© 2026 Muhammad Risyad Aria Aditya · All rights reserved</span>
+  <div class="footer-right">
+    <a href="#home">Top</a>
+    <a href="mailto:icad1404@gmail.com">Email</a>
+    <a href="https://instagram.com/risyadadt._" target="_blank">Instagram</a>
+  </div>
 </footer>
 
 <script>
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
-},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+// Cursor
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)}
+animRing();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';ring.style.width='60px';ring.style.height='60px'});
+  el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';ring.style.width='38px';ring.style.height='38px'});
+});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Smooth nav
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
 </script>
 </body>
 </html>
